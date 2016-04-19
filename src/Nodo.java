@@ -8,37 +8,54 @@ public class Nodo implements Comparable<Nodo> {
 
 	public Nodo(Tabuleiro tabuleiro) {
 		this.tabuleiro = tabuleiro;
-
 		calculaHeuristica();
 	}
 
 	private void calculaHeuristica() {
 		heuristica = 0;
 		int[][] posFinais = { { 1, 2, 3 }, { 8, 0, 4 }, { 7, 6, 5 } };
+		Tabuleiro tabuleiroFinal = new Tabuleiro(posFinais);
 		int valor = 0;
 		int[] posValorAtual;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				posValorAtual = tabuleiro.getPosValor(valor);
-				heuristica += Math.abs(i - posValorAtual[0]);
-				heuristica += Math.abs(j - posValorAtual[1]);
-				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[(posValorAtual[0]
-						+ 1)][posValorAtual[1]])
-					heuristica += 2;
+		int[] posValorFinal;
+		for (int i = 0; i < 9; i++) {
+			posValorFinal = tabuleiroFinal.getPosValor(valor);
+			posValorAtual = tabuleiro.getPosValor(valor);
+			heuristica += Math.abs(posValorFinal[0] - posValorAtual[0]);
+			heuristica += Math.abs(posValorFinal[1] - posValorAtual[1]);
 
-				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[(posValorAtual[0]
-						- 1)][posValorAtual[1]])
+			if (posValorAtual[0] < 2) {
+				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
+						.getPosicoes()[(posValorAtual[0] + 1)][posValorAtual[1]]
+						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
+								.getPosicoes()[(posValorAtual[0] + 1)][posValorAtual[1]])
 					heuristica += 2;
-
-				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[posValorAtual[0]][(posValorAtual[1]
-						- 1)])
-					heuristica += 2;
-
-				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[posValorAtual[0]][(posValorAtual[1]
-						+ 1)])
-					heuristica += 2;
-				valor++;
 			}
+			if (posValorAtual[0] > 0) {
+				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
+						.getPosicoes()[(posValorAtual[0] - 1)][posValorAtual[1]]
+						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
+								.getPosicoes()[(posValorAtual[0] - 1)][posValorAtual[1]])
+					heuristica += 2;
+			}
+			if (posValorAtual[1] > 0) {
+				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
+						.getPosicoes()[posValorAtual[0]][(posValorAtual[1] - 1)]
+						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
+								.getPosicoes()[posValorAtual[0]][(posValorAtual[1] - 1)])
+					heuristica += 2;
+			}
+			if (posValorAtual[1] < 2) {
+				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
+						.getPosicoes()[posValorAtual[0]][(posValorAtual[1] + 1)]
+						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
+								.getPosicoes()[posValorAtual[0]][(posValorAtual[1] + 1)])
+					heuristica += 2;
+			}
+
+			System.out.println(heuristica);
+
+			valor++;
 		}
 
 	}
