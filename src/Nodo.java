@@ -1,4 +1,4 @@
-
+	
 public class Nodo implements Comparable<Nodo>{
 
 	private Tabuleiro tabuleiro;
