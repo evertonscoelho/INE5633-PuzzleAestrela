@@ -36,7 +36,7 @@ public class Vish {
 		mito.visitaNodo(nodo);
 
 		System.out.println(
-				"Gastei pouco tempo, apenas " + (tempoInicial - System.currentTimeMillis()) + " milisegundos!");
+				"Gastei pouco tempo, apenas " + (System.currentTimeMillis() - tempoInicial) + " milisegundos!");
 	}
 
 }
