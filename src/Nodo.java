@@ -16,10 +16,6 @@ public class Nodo implements Comparable<Nodo>{
 		
 	}
 
-	public Nodo() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public Nodo getPai() {
 		return pai;
 	}
@@ -37,9 +33,20 @@ public class Nodo implements Comparable<Nodo>{
 
 	@Override
 	public int compareTo(Nodo o) {
-		// TODO Auto-generated method stub
-		//Se tu maior retorna 1, se outro maior retorna -1, se igual retorna 0
+		if(this.getComparativo() > o.getComparativo()){
+			return 1;
+		}else if(this.getComparativo() < o.getComparativo()){
+			return -1;
+		}
 		return 0;
+	}
+
+	private int getComparativo() {
+		return pai.getCustoAteAqui() + this.heuristica;
+	}
+
+	public int getCustoAteAqui() {
+		return custoAteAqui;
 	}
 	
 	

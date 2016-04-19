@@ -6,12 +6,12 @@ public class Mito {
 	private Fronteira fronteira = new Fronteira();
 
 	public void visitaNodo(Nodo nodoAtual) {
-		nodoAtual.calculaCusto();
 		if (ehObjetivo(nodoAtual)) {
 			System.out.println("Quantidade Max. de nodos na fronteira: " + fronteira.informaMaxNodo());
 			informaCaminhoEncontrado(nodoAtual);
 
 		} else {
+			nodoAtual.calculaCusto();
 			List<Nodo> filhos = geraFilhos(nodoAtual);
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
