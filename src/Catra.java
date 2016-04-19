@@ -59,17 +59,17 @@ public class Catra {
 	    	filhos.add(nodoFilho);
 	    }
 	    if(posicaoVazia[0] > 0){
-	    	tabuleiroFilho = moveBaixo(nodo.getTabuleiro(), posicaoVazia);
+	    	tabuleiroFilho = moveCima(nodo.getTabuleiro(), posicaoVazia);
 	    	nodoFilho = new Nodo(tabuleiroFilho);
 	    	filhos.add(nodoFilho);
 	    }
 	    if(posicaoVazia[1] > 0){
-	    	tabuleiroFilho = moveBaixo(nodo.getTabuleiro(), posicaoVazia);
+	    	tabuleiroFilho = moveEsquerda(nodo.getTabuleiro(), posicaoVazia);
 	    	nodoFilho = new Nodo(tabuleiroFilho);
 	    	filhos.add(nodoFilho);
 	    }
 	    if(posicaoVazia[1] < 2){
-	    	tabuleiroFilho = moveBaixo(nodo.getTabuleiro(), posicaoVazia);
+	    	tabuleiroFilho = moveDireita(nodo.getTabuleiro(), posicaoVazia);
 	    	nodoFilho = new Nodo(tabuleiroFilho);
 	    	filhos.add(nodoFilho);
 	    }

@@ -8,7 +8,7 @@ public class Nodo implements Comparable<Nodo> {
 
 	public Nodo(Tabuleiro tabuleiro) {
 		this.tabuleiro = tabuleiro;
-		
+
 		calculaHeuristica();
 	}
 
@@ -20,11 +20,27 @@ public class Nodo implements Comparable<Nodo> {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				posValorAtual = tabuleiro.getPosValor(valor);
-				heuristica+= Math.abs(i - posValorAtual[0]);
-				heuristica+= Math.abs(j - posValorAtual[1]);
+				heuristica += Math.abs(i - posValorAtual[0]);
+				heuristica += Math.abs(j - posValorAtual[1]);
+				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[(posValorAtual[0]
+						+ 1)][posValorAtual[1]])
+					heuristica += 2;
+
+				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[(posValorAtual[0]
+						- 1)][posValorAtual[1]])
+					heuristica += 2;
+
+				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[posValorAtual[0]][(posValorAtual[1]
+						- 1)])
+					heuristica += 2;
+
+				if (posFinais[posValorAtual[0]][posValorAtual[1]] == posFinais[posValorAtual[0]][(posValorAtual[1]
+						+ 1)])
+					heuristica += 2;
 				valor++;
 			}
 		}
+
 	}
 
 	public Nodo getPai() {
