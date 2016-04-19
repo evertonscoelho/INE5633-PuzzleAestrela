@@ -5,32 +5,32 @@ public class Catra {
 	
 	public Tabuleiro moveBaixo(Tabuleiro tabuleiro, int[] posicaoVazia) {
 		Tabuleiro tabuleiroNovo = new Tabuleiro(tabuleiro.getPosicoes());
-		tabuleiroNovo.setPosicao(0, posicaoVazia[0] += 1, posicaoVazia[1]);
-		int valorMovido = tabuleiro.getValor(posicaoVazia[0] += 1, posicaoVazia[1]);
+		tabuleiroNovo.setPosicao(0, posicaoVazia[0] + 1, posicaoVazia[1]);
+		int valorMovido = tabuleiro.getValor(posicaoVazia[0] + 1, posicaoVazia[1]);
 		tabuleiroNovo.setPosicao(valorMovido, posicaoVazia[0], posicaoVazia[1]);
 		return tabuleiroNovo;
 	}
 
 	public Tabuleiro moveCima(Tabuleiro tabuleiro, int[] posicaoVazia) {
 		Tabuleiro tabuleiroNovo = new Tabuleiro(tabuleiro.getPosicoes());
-		tabuleiroNovo.setPosicao(0, posicaoVazia[0] -= 1, posicaoVazia[1]);
-		int valorMovido = tabuleiro.getValor(posicaoVazia[0] -= 1, posicaoVazia[1]);
+		tabuleiroNovo.setPosicao(0, posicaoVazia[0] - 1, posicaoVazia[1]);
+		int valorMovido = tabuleiro.getValor(posicaoVazia[0] - 1, posicaoVazia[1]);
 		tabuleiroNovo.setPosicao(valorMovido, posicaoVazia[0], posicaoVazia[1]);
 		return tabuleiroNovo;
 	}
 
 	public Tabuleiro moveEsquerda(Tabuleiro tabuleiro, int[] posicaoVazia) {
 		Tabuleiro tabuleiroNovo = new Tabuleiro(tabuleiro.getPosicoes());
-		tabuleiroNovo.setPosicao(0, posicaoVazia[0], posicaoVazia[1] -= 1);
-		int valorMovido = tabuleiro.getValor(posicaoVazia[0], posicaoVazia[1] -= 1);
+		tabuleiroNovo.setPosicao(0, posicaoVazia[0], posicaoVazia[1] - 1);
+		int valorMovido = tabuleiro.getValor(posicaoVazia[0], posicaoVazia[1] - 1);
 		tabuleiroNovo.setPosicao(valorMovido, posicaoVazia[0], posicaoVazia[1]);
 		return tabuleiroNovo;
 	}
 
 	public Tabuleiro moveDireita(Tabuleiro tabuleiro, int[] posicaoVazia) {
 		Tabuleiro tabuleiroNovo = new Tabuleiro(tabuleiro.getPosicoes());
-		tabuleiroNovo.setPosicao(0, posicaoVazia[0], posicaoVazia[1] += 1);
-		int valorMovido = tabuleiro.getValor(posicaoVazia[0] += 1, posicaoVazia[1] += 1);
+		tabuleiroNovo.setPosicao(0, posicaoVazia[0], posicaoVazia[1] + 1);
+		int valorMovido = tabuleiro.getValor(posicaoVazia[0] + 1, posicaoVazia[1] + 1);
 		tabuleiroNovo.setPosicao(valorMovido, posicaoVazia[0], posicaoVazia[1]);
 		return tabuleiroNovo;
 	}

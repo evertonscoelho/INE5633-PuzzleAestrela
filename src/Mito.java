@@ -51,14 +51,14 @@ public class Mito {
 		if (i == 0) {
 			System.out.println("Tabuleiro inicial:");
 		} else {
-			int[][] pocisoes = tabuleiro.getPosicoes();
 			System.out.println("Jogada: " + i);
-			System.out.println(pocisoes[0][0] + "|" + pocisoes[0][1] + "|" + pocisoes[0][2]);
-			System.out.println("- - -");
-			System.out.println(pocisoes[1][0] + "|" + pocisoes[1][1] + "|" + pocisoes[1][2]);
-			System.out.println("- - -");
-			System.out.println(pocisoes[2][0] + "|" + pocisoes[2][1] + "|" + pocisoes[2][2] + "\n \n");
 		}
+		int[][] pocisoes = tabuleiro.getPosicoes();
+		System.out.println(pocisoes[0][0] + "|" + pocisoes[0][1] + "|" + pocisoes[0][2]);
+		System.out.println("- - -");
+		System.out.println(pocisoes[1][0] + "|" + pocisoes[1][1] + "|" + pocisoes[1][2]);
+		System.out.println("- - -");
+		System.out.println(pocisoes[2][0] + "|" + pocisoes[2][1] + "|" + pocisoes[2][2] + "\n \n");
 	}
 
 	private boolean ehObjetivo(Nodo nodoAtual) {

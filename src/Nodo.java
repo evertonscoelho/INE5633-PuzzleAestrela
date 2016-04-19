@@ -1,5 +1,5 @@
 
-public class Nodo implements Comparable<Nodo>{
+public class Nodo implements Comparable<Nodo> {
 
 	private Tabuleiro tabuleiro;
 	private Nodo pai;
@@ -8,12 +8,23 @@ public class Nodo implements Comparable<Nodo>{
 
 	public Nodo(Tabuleiro tabuleiro) {
 		this.tabuleiro = tabuleiro;
+		
 		calculaHeuristica();
 	}
 
 	private void calculaHeuristica() {
-		// TODO Auto-generated method stub
-		
+		heuristica = 0;
+		int[][] posFinais = { { 1, 2, 3 }, { 8, 0, 4 }, { 7, 6, 5 } };
+		int valor = 0;
+		int[] posValorAtual;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				posValorAtual = tabuleiro.getPosValor(valor);
+				heuristica+= Math.abs(i - posValorAtual[0]);
+				heuristica+= Math.abs(j - posValorAtual[1]);
+				valor++;
+			}
+		}
 	}
 
 	public Nodo getPai() {
@@ -33,9 +44,9 @@ public class Nodo implements Comparable<Nodo>{
 
 	@Override
 	public int compareTo(Nodo o) {
-		if(this.getComparativo() > o.getComparativo()){
+		if (this.getComparativo() > o.getComparativo()) {
 			return 1;
-		}else if(this.getComparativo() < o.getComparativo()){
+		} else if (this.getComparativo() < o.getComparativo()) {
 			return -1;
 		}
 		return 0;
@@ -48,7 +59,5 @@ public class Nodo implements Comparable<Nodo>{
 	public int getCustoAteAqui() {
 		return custoAteAqui;
 	}
-	
-	
 
 }
