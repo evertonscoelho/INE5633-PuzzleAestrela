@@ -15,7 +15,6 @@ public class Mito {
 			List<Nodo> filhos = geraFilhos(nodoAtual);
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
-			fronteira.imprime();
 			nodoAtual = fronteira.getProximoNodo();
 			if(nodoAtual != null){
 				visitaNodo(nodoAtual);

@@ -85,11 +85,6 @@ public class Nodo implements Comparable<Nodo> {
 			custoAteAqui = pai.custoAteAqui + 1;
 		else
 			custoAteAqui = 1;
-		
-		if(custoAteAqui > 30){
-			custoAteAqui *= 1000;
-		}
-		
 	}
 
 	@Override
