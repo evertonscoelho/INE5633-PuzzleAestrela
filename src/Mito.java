@@ -68,7 +68,7 @@ public class Mito {
 	private boolean ehObjetivo(Nodo nodoAtual) {
 		int[][] t1 = { { 1, 2, 3 }, { 8, 0, 4 }, { 7, 6, 5 } };
 		Tabuleiro tabuleiro = new Tabuleiro(t1);
-		return nodoAtual.getTabuleiro().getHash() == tabuleiro.getHash();
+		return nodoAtual.getTabuleiro().getIdentificador().equals(tabuleiro.getIdentificador());
 	}
 
 }

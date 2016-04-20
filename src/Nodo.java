@@ -99,7 +99,7 @@ public class Nodo implements Comparable<Nodo> {
 	@Override
 	public boolean equals(Object obj) {
 		Nodo nodo = (Nodo) obj;
-		return this.getTabuleiro().getHash() == nodo.getTabuleiro().getHash();
+		return this.getTabuleiro().getIdentificador().equals(nodo.getTabuleiro().getIdentificador());
 	}
 
 }
