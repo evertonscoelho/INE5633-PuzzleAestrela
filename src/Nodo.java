@@ -6,7 +6,6 @@ public class Nodo implements Comparable<Nodo> {
 	private Nodo pai;
 	private int custoAteAqui;
 	private int heuristica;
-	private String hash;
 	private HashMap<String, Integer> posicoesCruzadas = new HashMap<>();
 
 	public Nodo(Tabuleiro tabuleiro) {
@@ -76,7 +75,7 @@ public class Nodo implements Comparable<Nodo> {
 	public Nodo getPai() {
 		return pai;
 	}
-
+	
 	public Tabuleiro getTabuleiro() {
 		return tabuleiro;
 	}
@@ -86,6 +85,7 @@ public class Nodo implements Comparable<Nodo> {
 			custoAteAqui = pai.custoAteAqui + 1;
 		else
 			custoAteAqui = 1;
+		
 	}
 
 	@Override
@@ -98,17 +98,19 @@ public class Nodo implements Comparable<Nodo> {
 		return 0;
 	}
 
-	private int getComparativo() {
+	public int getComparativo() {
 		return pai.getCustoAteAqui() + this.heuristica;
 	}
 
+	public int getHeuristica(){
+		return heuristica;
+	}
 	public int getCustoAteAqui() {
 		return custoAteAqui;
 	}
 
 	public void setPai(Nodo nodo) {
 		this.pai = nodo;
-
 	}
 
 	@Override
@@ -118,3 +120,4 @@ public class Nodo implements Comparable<Nodo> {
 	}
 
 }
+

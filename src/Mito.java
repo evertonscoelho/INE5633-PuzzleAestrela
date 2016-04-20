@@ -4,6 +4,7 @@ import java.util.Stack;
 public class Mito {
 
 	private Fronteira fronteira = new Fronteira();
+	int teste = 0;
 
 	public void visitaNodo(Nodo nodoAtual) {
 		if (ehObjetivo(nodoAtual)) {
@@ -11,10 +12,19 @@ public class Mito {
 			informaCaminhoEncontrado(nodoAtual);
 
 		} else {
+		    System.out.println();
+		    System.out.println();
+		    System.out.println();
+			System.out.println("Jogada "+ teste);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			teste++;
 			nodoAtual.calculaCusto();
 			List<Nodo> filhos = geraFilhos(nodoAtual);
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
+			fronteira.imprime();
 			nodoAtual = fronteira.getProximoNodo();
 			if(nodoAtual != null){
 				visitaNodo(nodoAtual);
