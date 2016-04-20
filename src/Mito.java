@@ -12,7 +12,12 @@ public class Mito {
 
 		} else {
 			nodoAtual.calculaCusto();
+			imprimeTabuleiro(nodoAtual.getTabuleiro(), 0);
 			List<Nodo> filhos = geraFilhos(nodoAtual);
+			for(Nodo filho: filhos){
+				imprimeTabuleiro(filho.getTabuleiro(), 0);
+			}
+			imprimeTabuleiro(nodoAtual.getTabuleiro(), 0);
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
 			nodoAtual = fronteira.getProximoNodo();
@@ -51,7 +56,7 @@ public class Mito {
 
 	}
 
-	private void imprimeTabuleiro(Tabuleiro tabuleiro, int i) {
+	public void imprimeTabuleiro(Tabuleiro tabuleiro, int i) {
 		if (i == 0) {
 			System.out.println("Tabuleiro inicial:");
 		} else {

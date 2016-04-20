@@ -52,6 +52,7 @@ public class Catra {
 		int[] posicaoVazia = achaValor(nodo.getTabuleiro(), 0);
 		Tabuleiro tabuleiroFilho;
 		Nodo nodoFilho;
+		System.out.println(posicaoVazia[0] + " " + posicaoVazia[1]);
 
 		if (posicaoVazia[0] < 2) {
 			tabuleiroFilho = moveBaixo(nodo.getTabuleiro(), posicaoVazia);
