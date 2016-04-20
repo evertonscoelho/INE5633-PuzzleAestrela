@@ -16,7 +16,11 @@ public class Mito {
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
 			nodoAtual = fronteira.getProximoNodo();
-			visitaNodo(nodoAtual);
+			if(nodoAtual != null){
+				visitaNodo(nodoAtual);
+			}else{
+				System.out.println("Ops, parece que não encontramos nenhuma solução");
+			}
 		}
 
 	}
