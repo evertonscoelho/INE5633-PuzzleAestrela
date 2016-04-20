@@ -5,6 +5,7 @@ public class Nodo implements Comparable<Nodo> {
 	private Nodo pai;
 	private int custoAteAqui;
 	private int heuristica;
+	private String hash;
 
 	public Nodo(Tabuleiro tabuleiro) {
 		this.tabuleiro = tabuleiro;
@@ -93,6 +94,12 @@ public class Nodo implements Comparable<Nodo> {
 	public void setPai(Nodo nodo) {
 		this.pai = nodo;
 		
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Nodo nodo = (Nodo)obj;
+		return this.getTabuleiro().getHash() == nodo.getTabuleiro().getHash();
 	}
 
 }

@@ -25,7 +25,11 @@ public class Fronteira {
     }
 
     public Nodo getProximoNodo() {
-        return Collections.min(lista);
+        if(!lista.isEmpty()){
+        		return Collections.min(lista);
+        }else{
+        	return null;
+        }
     }
 
     public int informaMaxNodo() {
