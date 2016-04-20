@@ -4,28 +4,32 @@ import java.util.List;
 
 public class Fronteira {
 
-	private int qntdMaxNodo;
-	private List<Nodo> lista = new LinkedList<Nodo>();
+    private int qntdMaxNodo;
+    private List<Nodo> lista = new LinkedList<Nodo>();
+    private List<Nodo> listaRemovidos = new LinkedList<Nodo>();
 
-	public void adicionaNodos(List<Nodo> filhos) {
-		for(Nodo nodo: filhos){
-			lista.add(nodo);
-		}
-		if(lista.size() > qntdMaxNodo){
-			qntdMaxNodo = lista.size();
-		}
-	}
+    public void adicionaNodos(List<Nodo> filhos) {
+        for (Nodo nodo : filhos) {
+            if(!listaRemovidos.contains(nodo)){
+                lista.add(nodo);
+            }
+        }
+        if (lista.size() > qntdMaxNodo) {
+            qntdMaxNodo = lista.size();
+        }
+    }
 
-	public void removeNodo(Nodo nodoAtual) {
-		lista.remove(nodoAtual);
-	}
+    public void removeNodo(Nodo nodoAtual) {
+        listaRemovidos.add(nodoAtual);
+        lista.remove(nodoAtual);
+    }
 
-	public Nodo getProximoNodo() {
-		return Collections.min(lista);
-	}
+    public Nodo getProximoNodo() {
+        return Collections.min(lista);
+    }
 
-	public int informaMaxNodo() {
-		return qntdMaxNodo;
-	}
+    public int informaMaxNodo() {
+        return qntdMaxNodo;
+    }
 
 }
