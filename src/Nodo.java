@@ -7,6 +7,7 @@ public class Nodo implements Comparable<Nodo> {
 	private int custoAteAqui;
 	private int heuristica;
 	private String hash;
+	private HashMap<String, Integer> posicoesCruzadas = new HashMap<>();
 
 	public Nodo(Tabuleiro tabuleiro) {
 		this.tabuleiro = tabuleiro;
@@ -15,48 +16,61 @@ public class Nodo implements Comparable<Nodo> {
 
 	private void calculaHeuristica() {
 		heuristica = 0;
-		HashMap<String, Integer> posicoesCruzadas = new HashMap<String, Integer>();
 		int[][] posFinais = { { 1, 2, 3 }, { 8, 0, 4 }, { 7, 6, 5 } };
 		Tabuleiro tabuleiroFinal = new Tabuleiro(posFinais);
 		int valor = 0, coluna = 0, linha = 0;
 		int[] posValorAtual;
 		int[] posValorFinal;
+		String key;
 		for (int i = 0; i < 9; i++) {
 			posValorFinal = tabuleiroFinal.getPosValor(valor);
 			posValorAtual = tabuleiro.getPosValor(valor);
-			coluna = posValorFinal[0] - posValorAtual[0];
-			linha = posValorFinal[1] - posValorAtual[1];
-			
-			if (linha == 0 && coluna != 0) {
-				if (coluna > 0) {
-					addHash(posicoesCruzadas, "C_D");
-				} else if (coluna < 0) {
-					addHash(posicoesCruzadas, "C_E");
-				}
-			} else if (linha != 0 && coluna == 0) {
-				if (linha > 0) {
-					addHash(posicoesCruzadas, "L_B");
-				} else if (linha < 0) {
-					addHash(posicoesCruzadas, "L_C");
+			linha = posValorFinal[0] - posValorAtual[0];
+			coluna = posValorFinal[1] - posValorAtual[1];
+			if (i > 0) {
+				if (linha == 0 && coluna != 0) {
+					key = "C" + posValorAtual[0];
+					if (coluna > 0) {
+						key += "D";
+						posicoesCruzadas.put(key, 1);
+					} else if (coluna < 0) {
+						key += "E";
+						posicoesCruzadas.put(key, 1);
+					}
+				} else if (linha != 0 && coluna == 0) {
+					key = "L" + posValorAtual[1];
+					if (linha > 0) {
+						key += "B";
+						posicoesCruzadas.put(key, 1);
+					} else if (linha < 0) {
+						key += "C";
+						posicoesCruzadas.put(key, 1);
+					}
 				}
 			}
 			valor++;
 			heuristica += Math.abs(coluna) + Math.abs(linha);
 		}
-		if (posicoesCruzadas.containsKey("C_D") && posicoesCruzadas.containsKey("C_E")) {
-			heuristica += posicoesCruzadas.get("C_D")+ posicoesCruzadas.get("C_E");
-		}
-		if (posicoesCruzadas.containsKey("L_B") && posicoesCruzadas.containsKey("L_C")) {
-			heuristica += posicoesCruzadas.get("L_B")+ posicoesCruzadas.get("L_C");
-		}
+		calculaCruzadas();
 	}
 
-	private void addHash(HashMap<String, Integer> posicoesCruzadas, String key) {
-		if (posicoesCruzadas.containsKey(key)) {
-			posicoesCruzadas.put(key, 2);
+	private void calculaCruzadas() {
+		// Pra tentar salvar o desempenho evitei for
+		heuristica += containKeys("C0D", "C0E");
+		heuristica += containKeys("C1D", "C1E");
+		heuristica += containKeys("C2D", "C2E");
+		heuristica += containKeys("L0B", "L0C");
+		heuristica += containKeys("L1B", "L1C");
+		heuristica += containKeys("L2B", "L2C");
+	}
+
+	private int containKeys(String k1, String k2) {
+		if (posicoesCruzadas.containsKey(k1) && posicoesCruzadas.containsKey(k2)) {
+			return 2;
 		} else {
-			posicoesCruzadas.put(key, 1);
+			return 0;
 		}
+
 	}
 
 	public Nodo getPai() {
