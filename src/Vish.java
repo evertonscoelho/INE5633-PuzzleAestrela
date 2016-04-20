@@ -33,11 +33,9 @@ public class Vish {
 		Tabuleiro tabuleiro = new Tabuleiro(posicoes);
 		Mito mito = new Mito();
 		Nodo nodo = new Nodo(tabuleiro);
-		nodo.setPai(nodo);
 		mito.visitaNodo(nodo);
-
 		System.out.println(
-				"Gastei pouco tempo, apenas " + (System.currentTimeMillis()- tempoInicial) + " milisegundos!");
+				"Gastei pouco tempo, apenas " + (System.currentTimeMillis() - tempoInicial) + " milisegundos!");
 	}
 
 }

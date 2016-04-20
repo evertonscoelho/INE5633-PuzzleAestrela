@@ -2,13 +2,19 @@
 public class Tabuleiro {
 
 	private int[][] posicoes = new int[3][3];
+	int hash;
 
 	public Tabuleiro(int[][] posicoes) {
 		this.posicoes = posicoes;
+		hash = this.posicoes.hashCode();
 	}
 
 	public int[][] getPosicoes() {
 		return posicoes;
+	}
+	
+	public int getHash(){
+		return hash;
 	}
 
 	public void setPosicao(int valor, int linha, int coluna) {
