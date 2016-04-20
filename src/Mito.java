@@ -42,8 +42,9 @@ public class Mito {
 				acabouJessica = true;
 			}
 		}
-		System.out.println("Quantidade de jogadas: " + (stack.size() - 1));
-		for (int i = 0; i < stack.size(); i++) {
+		int tamanhoPilha = stack.size();
+		System.out.println("Profundidade: " + (tamanhoPilha - 1));
+		for (int i = 0; i < tamanhoPilha; i++) {
 			aux = stack.pop();
 			imprimeTabuleiro(aux.getTabuleiro(), i);
 		}
@@ -65,7 +66,7 @@ public class Mito {
 	}
 
 	private boolean ehObjetivo(Nodo nodoAtual) {
-		return nodoAtual.getTabuleiro().getIdentificador() == 1238047651;
+		return nodoAtual.getTabuleiro().getIdentificador() == 123804765;
 	}
 
 }
