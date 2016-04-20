@@ -86,6 +86,10 @@ public class Nodo implements Comparable<Nodo> {
 		else
 			custoAteAqui = 1;
 		
+		if(custoAteAqui > 30){
+			custoAteAqui *= 1000;
+		}
+		
 	}
 
 	@Override

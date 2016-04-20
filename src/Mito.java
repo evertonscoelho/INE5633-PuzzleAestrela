@@ -4,7 +4,6 @@ import java.util.Stack;
 public class Mito {
 
 	private Fronteira fronteira = new Fronteira();
-	int teste = 0;
 
 	public void visitaNodo(Nodo nodoAtual) {
 		if (ehObjetivo(nodoAtual)) {
@@ -12,14 +11,6 @@ public class Mito {
 			informaCaminhoEncontrado(nodoAtual);
 
 		} else {
-		    System.out.println();
-		    System.out.println();
-		    System.out.println();
-			System.out.println("Jogada "+ teste);
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			teste++;
 			nodoAtual.calculaCusto();
 			List<Nodo> filhos = geraFilhos(nodoAtual);
 			fronteira.adicionaNodos(filhos);
@@ -52,8 +43,9 @@ public class Mito {
 				acabouJessica = true;
 			}
 		}
-		System.out.println("Quantidade de jogadas: " + (stack.size() - 1));
-		for (int i = 0; i < stack.size(); i++) {
+		int tamanhoPilha = stack.size();
+		System.out.println("Profundidade: " + (tamanhoPilha - 1));
+		for (int i = 0; i < tamanhoPilha; i++) {
 			aux = stack.pop();
 			imprimeTabuleiro(aux.getTabuleiro(), i);
 		}
@@ -75,7 +67,7 @@ public class Mito {
 	}
 
 	private boolean ehObjetivo(Nodo nodoAtual) {
-		return nodoAtual.getTabuleiro().getIdentificador() == 1238047651;
+		return nodoAtual.getTabuleiro().getIdentificador() == 123804765;
 	}
 
 }

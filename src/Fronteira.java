@@ -38,14 +38,14 @@ public class Fronteira {
     }
 
 	public void imprime() {
-		System.out.println("Fronteira :");
+		/*System.out.println("Fronteira :");
 		for(Nodo nodo : lista){
 			System.out.println();
 			System.out.println("Tabuleiro: "+nodo.getTabuleiro().getIdentificador());
 			System.out.println("Comparativo: "+nodo.getComparativo());
 			System.out.println("Heuristica: " + nodo.getHeuristica());
 			System.out.println("Custo até aqui: " + nodo.getCustoAteAqui());
-		}	
+		}*/
 	}
 
 }
