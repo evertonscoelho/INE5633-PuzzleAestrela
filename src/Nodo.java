@@ -90,4 +90,9 @@ public class Nodo implements Comparable<Nodo> {
 		return custoAteAqui;
 	}
 
+	public void setPai(Nodo nodo) {
+		this.pai = nodo;
+		
+	}
+
 }

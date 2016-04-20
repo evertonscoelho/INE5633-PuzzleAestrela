@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Catra {
-	
+
 	public Tabuleiro moveBaixo(Tabuleiro tabuleiro, int[] posicaoVazia) {
 		Tabuleiro tabuleiroNovo = new Tabuleiro(tabuleiro.getPosicoes());
 		tabuleiroNovo.setPosicao(0, posicaoVazia[0] + 1, posicaoVazia[1]);
@@ -49,30 +49,34 @@ public class Catra {
 
 	public List<Nodo> geraFilhos(Nodo nodo) {
 		List<Nodo> filhos = new ArrayList<Nodo>();
-	    int[] posicaoVazia = achaValor(nodo.getTabuleiro(), 0);
-	    Tabuleiro tabuleiroFilho;
-	    Nodo nodoFilho;
-	    
-	    if(posicaoVazia[0] < 2){
-	    	tabuleiroFilho = moveBaixo(nodo.getTabuleiro(), posicaoVazia);
-	    	nodoFilho = new Nodo(tabuleiroFilho);
-	    	filhos.add(nodoFilho);
-	    }
-	    if(posicaoVazia[0] > 0){
-	    	tabuleiroFilho = moveCima(nodo.getTabuleiro(), posicaoVazia);
-	    	nodoFilho = new Nodo(tabuleiroFilho);
-	    	filhos.add(nodoFilho);
-	    }
-	    if(posicaoVazia[1] > 0){
-	    	tabuleiroFilho = moveEsquerda(nodo.getTabuleiro(), posicaoVazia);
-	    	nodoFilho = new Nodo(tabuleiroFilho);
-	    	filhos.add(nodoFilho);
-	    }
-	    if(posicaoVazia[1] < 2){
-	    	tabuleiroFilho = moveDireita(nodo.getTabuleiro(), posicaoVazia);
-	    	nodoFilho = new Nodo(tabuleiroFilho);
-	    	filhos.add(nodoFilho);
-	    }
+		int[] posicaoVazia = achaValor(nodo.getTabuleiro(), 0);
+		Tabuleiro tabuleiroFilho;
+		Nodo nodoFilho;
+
+		if (posicaoVazia[0] < 2) {
+			tabuleiroFilho = moveBaixo(nodo.getTabuleiro(), posicaoVazia);
+			nodoFilho = new Nodo(tabuleiroFilho);
+			nodoFilho.setPai(nodo);
+			filhos.add(nodoFilho);
+		}
+		if (posicaoVazia[0] > 0) {
+			tabuleiroFilho = moveCima(nodo.getTabuleiro(), posicaoVazia);
+			nodoFilho = new Nodo(tabuleiroFilho);
+			nodoFilho.setPai(nodo);
+			filhos.add(nodoFilho);
+		}
+		if (posicaoVazia[1] > 0) {
+			tabuleiroFilho = moveEsquerda(nodo.getTabuleiro(), posicaoVazia);
+			nodoFilho = new Nodo(tabuleiroFilho);
+			nodoFilho.setPai(nodo);
+			filhos.add(nodoFilho);
+		}
+		if (posicaoVazia[1] < 2) {
+			tabuleiroFilho = moveDireita(nodo.getTabuleiro(), posicaoVazia);
+			nodoFilho = new Nodo(tabuleiroFilho);
+			nodoFilho.setPai(nodo);
+			filhos.add(nodoFilho);
+		}
 		return filhos;
 	}
 }
