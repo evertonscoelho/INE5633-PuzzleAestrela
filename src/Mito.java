@@ -22,7 +22,6 @@ public class Mito {
 				System.out.println("Ops, parece que não encontramos nenhuma solução");
 			}
 		}
-
 	}
 
 	private List<Nodo> geraFilhos(Nodo nodoAtual) {
