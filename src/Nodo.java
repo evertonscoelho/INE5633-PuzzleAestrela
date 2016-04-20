@@ -26,6 +26,7 @@ public class Nodo implements Comparable<Nodo> {
 			posValorAtual = tabuleiro.getPosValor(valor);
 			coluna = posValorFinal[0] - posValorAtual[0];
 			linha = posValorFinal[1] - posValorAtual[1];
+			
 			if (linha == 0 && coluna != 0) {
 				if (coluna > 0) {
 					addHash(posicoesCruzadas, "C_D");

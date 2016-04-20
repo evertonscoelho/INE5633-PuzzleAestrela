@@ -15,6 +15,7 @@ public class Tabuleiro {
 
 	public void setPosicao(int valor, int linha, int coluna) {
 		posicoes[linha][coluna] = valor;
+		geraIdentificador();
 	}
 
 	public int getValor(int linha, int coluna) {
