@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public class Nodo implements Comparable<Nodo> {
 
@@ -14,48 +15,47 @@ public class Nodo implements Comparable<Nodo> {
 
 	private void calculaHeuristica() {
 		heuristica = 0;
+		HashMap<String, Integer> posicoesCruzadas = new HashMap<String, Integer>();
 		int[][] posFinais = { { 1, 2, 3 }, { 8, 0, 4 }, { 7, 6, 5 } };
 		Tabuleiro tabuleiroFinal = new Tabuleiro(posFinais);
-		int valor = 0;
+		int valor = 0, coluna = 0, linha = 0;
 		int[] posValorAtual;
 		int[] posValorFinal;
 		for (int i = 0; i < 9; i++) {
 			posValorFinal = tabuleiroFinal.getPosValor(valor);
 			posValorAtual = tabuleiro.getPosValor(valor);
-			heuristica += Math.abs(posValorFinal[0] - posValorAtual[0]);
-			heuristica += Math.abs(posValorFinal[1] - posValorAtual[1]);
-
-			if (posValorAtual[0] < 2) {
-				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
-						.getPosicoes()[(posValorAtual[0] + 1)][posValorAtual[1]]
-						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
-								.getPosicoes()[(posValorAtual[0] + 1)][posValorAtual[1]])
-					heuristica += 2;
-			}
-			if (posValorAtual[0] > 0) {
-				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
-						.getPosicoes()[(posValorAtual[0] - 1)][posValorAtual[1]]
-						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
-								.getPosicoes()[(posValorAtual[0] - 1)][posValorAtual[1]])
-					heuristica += 2;
-			}
-			if (posValorAtual[1] > 0) {
-				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
-						.getPosicoes()[posValorAtual[0]][(posValorAtual[1] - 1)]
-						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
-								.getPosicoes()[posValorAtual[0]][(posValorAtual[1] - 1)])
-					heuristica += 2;
-			}
-			if (posValorAtual[1] < 2) {
-				if (tabuleiroFinal.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiro
-						.getPosicoes()[posValorAtual[0]][(posValorAtual[1] + 1)]
-						&& tabuleiro.getPosicoes()[posValorAtual[0]][posValorAtual[1]] == tabuleiroFinal
-								.getPosicoes()[posValorAtual[0]][(posValorAtual[1] + 1)])
-					heuristica += 2;
+			coluna = posValorFinal[0] - posValorAtual[0];
+			linha = posValorFinal[1] - posValorAtual[1];
+			if (linha == 0 && coluna != 0) {
+				if (coluna > 0) {
+					addHash(posicoesCruzadas, "C_D");
+				} else if (coluna < 0) {
+					addHash(posicoesCruzadas, "C_E");
+				}
+			} else if (linha != 0 && coluna == 0) {
+				if (linha > 0) {
+					addHash(posicoesCruzadas, "L_B");
+				} else if (linha < 0) {
+					addHash(posicoesCruzadas, "L_C");
+				}
 			}
 			valor++;
+			heuristica += Math.abs(coluna) + Math.abs(linha);
 		}
+		if (posicoesCruzadas.containsKey("C_D") && posicoesCruzadas.containsKey("C_E")) {
+			heuristica += posicoesCruzadas.get("C_D")+ posicoesCruzadas.get("C_E");
+		}
+		if (posicoesCruzadas.containsKey("L_B") && posicoesCruzadas.containsKey("L_C")) {
+			heuristica += posicoesCruzadas.get("L_B")+ posicoesCruzadas.get("L_C");
+		}
+	}
 
+	private void addHash(HashMap<String, Integer> posicoesCruzadas, String key) {
+		if (posicoesCruzadas.containsKey(key)) {
+			posicoesCruzadas.put(key, 2);
+		} else {
+			posicoesCruzadas.put(key, 1);
+		}
 	}
 
 	public Nodo getPai() {
@@ -93,12 +93,12 @@ public class Nodo implements Comparable<Nodo> {
 
 	public void setPai(Nodo nodo) {
 		this.pai = nodo;
-		
+
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
-		Nodo nodo = (Nodo)obj;
+		Nodo nodo = (Nodo) obj;
 		return this.getTabuleiro().getHash() == nodo.getTabuleiro().getHash();
 	}
 
