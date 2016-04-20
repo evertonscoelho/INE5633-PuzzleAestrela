@@ -17,7 +17,6 @@ public class Mito {
 			for(Nodo filho: filhos){
 				imprimeTabuleiro(filho.getTabuleiro(), 0);
 			}
-			imprimeTabuleiro(nodoAtual.getTabuleiro(), 0);
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
 			nodoAtual = fronteira.getProximoNodo();
