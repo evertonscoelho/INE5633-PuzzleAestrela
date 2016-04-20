@@ -35,10 +35,8 @@ public class Tabuleiro {
 					resposta[1] = j;
 					return resposta;
 				}
-
 			}
 		}
-
 		return resposta;
 	}
 

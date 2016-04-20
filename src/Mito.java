@@ -12,11 +12,7 @@ public class Mito {
 
 		} else {
 			nodoAtual.calculaCusto();
-			imprimeTabuleiro(nodoAtual.getTabuleiro(), 0);
 			List<Nodo> filhos = geraFilhos(nodoAtual);
-			for(Nodo filho: filhos){
-				imprimeTabuleiro(filho.getTabuleiro(), 0);
-			}
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
 			nodoAtual = fronteira.getProximoNodo();
