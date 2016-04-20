@@ -2,24 +2,19 @@
 public class Tabuleiro {
 
 	private int[][] posicoes = new int[3][3];
-	int hash;
+	private String identificador;
 
 	public Tabuleiro(int[][] posicoes) {
 		this.posicoes = posicoes;
-		hash = this.posicoes.hashCode();
+		geraIdentificador();
 	}
 
 	public int[][] getPosicoes() {
 		return posicoes;
 	}
-	
-	public int getHash(){
-		return hash;
-	}
 
 	public void setPosicao(int valor, int linha, int coluna) {
 		posicoes[linha][coluna] = valor;
-		hash = this.posicoes.hashCode();
 	}
 
 	public int getValor(int linha, int coluna) {
@@ -38,6 +33,21 @@ public class Tabuleiro {
 			}
 		}
 		return resposta;
+	}
+
+	private void geraIdentificador() {
+		String idetificadorString = "";
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				idetificadorString += posicoes[i][j] + "";
+			}
+		}
+
+		identificador = idetificadorString;
+	}
+
+	public String getIdentificador() {
+		return identificador;
 	}
 
 }
