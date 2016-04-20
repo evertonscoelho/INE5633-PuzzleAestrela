@@ -51,7 +51,7 @@ public class Mito {
 
 	}
 
-	public void imprimeTabuleiro(Tabuleiro tabuleiro, int i) {
+	private void imprimeTabuleiro(Tabuleiro tabuleiro, int i) {
 		if (i == 0) {
 			System.out.println("Tabuleiro inicial:");
 		} else {

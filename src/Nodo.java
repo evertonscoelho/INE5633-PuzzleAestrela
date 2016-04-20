@@ -52,9 +52,6 @@ public class Nodo implements Comparable<Nodo> {
 								.getPosicoes()[posValorAtual[0]][(posValorAtual[1] + 1)])
 					heuristica += 2;
 			}
-
-			System.out.println(heuristica);
-
 			valor++;
 		}
 
@@ -91,6 +88,11 @@ public class Nodo implements Comparable<Nodo> {
 
 	public int getCustoAteAqui() {
 		return custoAteAqui;
+	}
+
+	public void setPai(Nodo nodo) {
+		this.pai = nodo;
+		
 	}
 
 }
