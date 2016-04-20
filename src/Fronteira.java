@@ -6,13 +6,13 @@ public class Fronteira {
 
     private int qntdMaxNodo;
     private List<Nodo> lista = new LinkedList<Nodo>();
-    private List<Nodo> listaRemovidos = new LinkedList<Nodo>();
+    private List<String> listaRemovidos = new LinkedList<String>();
 
     public void adicionaNodos(List<Nodo> filhos) {
         for (Nodo nodo : filhos) {
-            if(!listaRemovidos.contains(nodo)){
+            if(!listaRemovidos.contains(nodo.getTabuleiro().getIdentificador())){
                 lista.add(nodo);
-            }
+            } 
         }
         if (lista.size() > qntdMaxNodo) {
             qntdMaxNodo = lista.size();
@@ -20,7 +20,7 @@ public class Fronteira {
     }
 
     public void removeNodo(Nodo nodoAtual) {
-        listaRemovidos.add(nodoAtual);
+        listaRemovidos.add(nodoAtual.getTabuleiro().getIdentificador());
         lista.remove(nodoAtual);
     }
 
