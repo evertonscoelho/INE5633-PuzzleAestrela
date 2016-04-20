@@ -6,7 +6,7 @@ public class Fronteira {
 
     private int qntdMaxNodo;
     private List<Nodo> lista = new LinkedList<Nodo>();
-    private List<String> listaRemovidos = new LinkedList<String>();
+    private List<Integer> listaRemovidos = new LinkedList<Integer>();
     
     
     public void adicionaNodos(List<Nodo> filhos) {

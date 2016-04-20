@@ -114,7 +114,7 @@ public class Nodo implements Comparable<Nodo> {
 	@Override
 	public boolean equals(Object obj) {
 		Nodo nodo = (Nodo) obj;
-		return this.getTabuleiro().getIdentificador().equals(nodo.getTabuleiro().getIdentificador());
+		return this.getTabuleiro().getIdentificador() == nodo.getTabuleiro().getIdentificador();
 	}
 
 }

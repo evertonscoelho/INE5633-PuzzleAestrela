@@ -2,7 +2,7 @@
 public class Tabuleiro {
 
 	private int[][] posicoes = new int[3][3];
-	private String identificador;
+	private int identificador;
 
 	public Tabuleiro(int[][] posicoes) {
 		this.posicoes = posicoes;
@@ -37,17 +37,17 @@ public class Tabuleiro {
 	}
 
 	private void geraIdentificador() {
-		String idetificadorString = "";
+		StringBuilder idetificadorString = new StringBuilder();
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				idetificadorString += posicoes[i][j] + "";
+				idetificadorString.append(posicoes[i][j]);
 			}
 		}
 
-		identificador = idetificadorString;
+		identificador = Integer.parseInt(idetificadorString.toString());
 	}
 
-	public String getIdentificador() {
+	public int getIdentificador() {
 		return identificador;
 	}
 
