@@ -19,6 +19,7 @@ public class Tabuleiro {
 
 	public void setPosicao(int valor, int linha, int coluna) {
 		posicoes[linha][coluna] = valor;
+		hash = this.posicoes.hashCode();
 	}
 
 	public int getValor(int linha, int coluna) {

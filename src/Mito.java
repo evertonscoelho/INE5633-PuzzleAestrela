@@ -17,7 +17,6 @@ public class Mito {
 			for(Nodo filho: filhos){
 				imprimeTabuleiro(filho.getTabuleiro(), 0);
 			}
-			imprimeTabuleiro(nodoAtual.getTabuleiro(), 0);
 			fronteira.adicionaNodos(filhos);
 			fronteira.removeNodo(nodoAtual);
 			nodoAtual = fronteira.getProximoNodo();
@@ -71,16 +70,9 @@ public class Mito {
 	}
 
 	private boolean ehObjetivo(Nodo nodoAtual) {
-		int[][] t = nodoAtual.getTabuleiro().getPosicoes();
 		int[][] t1 = { { 1, 2, 3 }, { 8, 0, 4 }, { 7, 6, 5 } };
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (!(t[i][j] == t1[i][j])) {
-					return false;
-				}
-			}
-		}
-		return true;
+		Tabuleiro tabuleiro = new Tabuleiro(t1);
+		return nodoAtual.getTabuleiro().getHash() == tabuleiro.getHash();
 	}
 
 }
